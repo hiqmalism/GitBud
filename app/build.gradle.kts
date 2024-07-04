@@ -6,18 +6,18 @@ plugins {
 }
 
 android {
-    namespace = "com.hiqmalism.fundamentalfirstsub"
+    namespace = "com.hiqmalism.gitbud"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.hiqmalism.fundamentalfirstsub"
+        applicationId = "com.hiqmalism.gitbud"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        //buildConfigField("String", "KEY", "your_token")
+        buildConfigField("String", "KEY", "\"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\"")
     }
 
     buildTypes {
@@ -64,6 +64,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     ksp("androidx.room:room-compiler:2.6.1")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }

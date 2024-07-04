@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
-import com.hiqmalism.fundamentalfirstsub.R
 import com.hiqmalism.gitbud.ui.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")

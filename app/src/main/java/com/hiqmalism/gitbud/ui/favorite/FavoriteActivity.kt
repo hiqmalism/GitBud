@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hiqmalism.gitbud.databinding.ActivityFavoriteBinding
 import com.hiqmalism.gitbud.helper.ViewModelFactory
@@ -35,9 +36,13 @@ class FavoriteActivity : AppCompatActivity() {
 
         adapter = FavoriteAdapter()
 
-        binding?.rvFavorites?.layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this)
+        binding?.rvFavorites?.layoutManager = layoutManager
         binding?.rvFavorites?.setHasFixedSize(true)
         binding?.rvFavorites?.adapter = adapter
+
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding?.rvFavorites?.addItemDecoration(itemDecoration)
 
         favoriteViewModel.isLoading.observe(this) {
             showLoading(it)

@@ -13,10 +13,11 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userAvatar"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/md_theme_onSecondaryContainer"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -26,52 +27,76 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="16sp"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/userAvatar"
-            app:layout_constraintStart_toStartOf="@id/userAvatar"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userAvatar"
             tools:text="Username" />
-
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/tvDisplayName"
-            app:layout_constraintStart_toStartOf="@id/tvDisplayName"
-            app:layout_constraintTop_toBottomOf="@id/tvDisplayName"
-            tools:text="Display name" />
 
         <LinearLayout
             android:id="@+id/followLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
+            android:layout_margin="32dp"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvUsername">
+            app:layout_constraintStart_toEndOf="@id/userAvatar"
+            app:layout_constraintBottom_toBottomOf="@id/userAvatar">
 
-            <TextView
-                android:id="@+id/tvFollowers"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/followers"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvFollowing"
+                <TextView
+                    android:id="@+id/tvFollowers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followers"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_followers"
+                    style="@style/TextAppearance.MaterialComponents.Body2" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/following"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="32dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvFollowing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followers"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_following"
+                    style="@style/TextAppearance.MaterialComponents.Body2" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="24dp"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDisplayName"
+            tools:text="Lorem ipsum"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -79,9 +104,10 @@
             android:layout_height="wrap_content"
             app:tabSelectedTextColor="@color/md_theme_secondary"
             app:tabIndicatorColor="@color/md_theme_secondary"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/followLayout" />
+            app:layout_constraintTop_toBottomOf="@id/tv_bio" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
@@ -105,12 +131,14 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_favorite"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="72dp"
-            app:fabSize="mini"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="@color/icon_color"
+            android:contentDescription="@string/favorite_button"
+            app:fabCustomSize="32dp"
             app:layout_constraintStart_toStartOf="@+id/userAvatar"
             app:layout_constraintTop_toTopOf="@+id/userAvatar"
             app:srcCompat="@drawable/ic_unfavorite" />

@@ -27,4 +27,6 @@
     <color name="md_theme_inverseSurface">#E2E2E2</color>
     <color name="md_theme_inverseOnSurface">#303030</color>
     <color name="md_theme_inversePrimary">#5E5E5E</color>
+
+    <color name="icon_color">#FFFFFF</color>
 </resources>

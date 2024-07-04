@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">GitBud</string>
 
-    <string name="followers">%d Followers</string>
-    <string name="following">%d Following</string>
+    <string name="followers">%d</string>
+    <string name="following">%d</string>
     <string name="fav_user">Favorite User</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="searchbar_hint">Search github user…</string>
@@ -10,4 +10,6 @@
     <string name="tab_following">Following</string>
     <string name="content_tab_followers">Get followers</string>
     <string name="content_tab_following">Get following</string>
+    <string name="gitbud">GitBud</string>
+    <string name="favorite_button">Favorite button</string>
 </resources>

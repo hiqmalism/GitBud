@@ -41,7 +41,6 @@ class DetailUserActivity : AppCompatActivity() {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "User Page"
 
         val getIntent = intent.getStringExtra(EXTRA_NAME)
         val getAvatarUrl = intent.getStringExtra(AVATAR_URL)
@@ -57,7 +56,9 @@ class DetailUserActivity : AppCompatActivity() {
 
         detailViewModel.logMessage.observe(this) { errorMessage ->
             errorMessage.let {
-                Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getColor(R.color.md_theme_error))
+                    .show()
             }
         }
 
@@ -104,10 +105,16 @@ class DetailUserActivity : AppCompatActivity() {
                 .load(user.avatarUrl)
                 .into(userAvatar)
             tvDisplayName.text = user.name
-            tvUsername.text = user.login
+            if (user.bio != null) {
+                tvBio.text = user.bio.toString()
+            } else {
+                tvBio.text = ""
+            }
             tvFollowers.text = getString(R.string.followers, user.followers)
             tvFollowing.text = getString(R.string.following, user.following)
         }
+
+        supportActionBar?.title = user.login
     }
 
     private fun showLoading(isLoading: Boolean) {

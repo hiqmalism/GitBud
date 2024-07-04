@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     card_view:cardBackgroundColor="@color/md_theme_onPrimary"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:gravity="center"
@@ -14,22 +15,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/img_item_avatar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
-            android:layout_margin="8dp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintBottom_toTopOf="@id/placeholder"
             tools:src="@tools:sample/avatars"/>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/placeholder"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             card_view:cardBackgroundColor="@color/md_theme_primary"
-            android:layout_marginTop="8dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -39,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_margin="8dp"
+                android:layout_margin="16dp"
                 style="@style/TextAppearance.MaterialComponents.Body1"
                 android:textStyle="bold"
                 tools:text="Username"/>

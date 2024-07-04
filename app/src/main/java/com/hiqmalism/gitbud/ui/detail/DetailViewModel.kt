@@ -1,6 +1,7 @@
 package com.hiqmalism.gitbud.ui.detail
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -52,6 +53,7 @@ class DetailViewModel(application: Application) : ViewModel() {
                     _detailUser.value = response.body()
                 } else {
                     _logMessage.value = "Failed to retrieve user data: ${response.message()}"
+                    Log.d("DetailUser", "Ini Kunaon: ${response.message()}")
                 }
             }
 

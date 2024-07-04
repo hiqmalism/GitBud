@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 .setOnEditorActionListener { _, _, _ ->
                     searchView.setupWithSearchBar(searchBar)
                     val username = searchView.text.toString()
+                    Log.d("MainActivity", "Searching for: $username")
                     mainViewModel.searchGithub(username)
                     searchView.hide()
                     false
@@ -57,7 +59,9 @@ class MainActivity : AppCompatActivity() {
 
         val layoutManager = GridLayoutManager(this, 2)
         binding.rvAccount.layoutManager = layoutManager
+
         mainViewModel.listGithub.observe(this) { listGithub ->
+            Log.d("MainActivity", "Github list updated: $listGithub")
             setGithubData(listGithub)
         }
 
@@ -77,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
             actionView.setOnCheckedChangeListener {
-                _: CompoundButton?, isChecked: Boolean ->
+                    _: CompoundButton?, isChecked: Boolean ->
                 mainViewModel.saveThemeSettings(isChecked)
             }
         }
@@ -100,13 +104,10 @@ class MainActivity : AppCompatActivity() {
         val adapter = GithubAdapter()
         adapter.submitList(userList)
         binding.rvAccount.adapter = adapter
+        Log.d("MainActivity", "Adapter set with data: $userList")
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
     }
 }

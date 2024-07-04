@@ -1,6 +1,7 @@
 package com.hiqmalism.gitbud.ui.main
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -21,6 +22,7 @@ class GithubAdapter : ListAdapter<ItemsItem, GithubAdapter.MyViewHolder>(DIFF_CA
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
+        Log.d("GithubAdapter", "Binding item: $item")
         holder.itemView.setOnClickListener {
             val intentDetail = Intent(holder.itemView.context, DetailUserActivity::class.java)
             intentDetail.putExtra("username", item.login)
@@ -35,11 +37,12 @@ class GithubAdapter : ListAdapter<ItemsItem, GithubAdapter.MyViewHolder>(DIFF_CA
                 .load(item.avatarUrl)
                 .into(binding.imgItemAvatar)
             binding.tvItemUsername.text = item.login
+            Log.d("MyViewHolder", "Avatar URL: ${item.avatarUrl}, Username: ${item.login}")
         }
     }
 
     companion object {
-        val DIFF_CALLBACK = object  : DiffUtil.ItemCallback<ItemsItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ItemsItem>() {
             override fun areItemsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
                 return oldItem == newItem
             }

@@ -17,7 +17,7 @@ data class DetailUserResponse(
 	val twitterUsername: Any,
 
 	@field:SerializedName("bio")
-	val bio: Any,
+	val bio: Any?,
 
 	@field:SerializedName("created_at")
 	val createdAt: String,
